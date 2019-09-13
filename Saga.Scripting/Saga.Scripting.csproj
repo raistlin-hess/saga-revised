@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -13,10 +13,11 @@
     </StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
-    <OldToolsVersion>2.0</OldToolsVersion>
+    <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -107,7 +108,7 @@
       <Name>Saga.Map</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shared\Saga.Shared.Definitions\Saga.Shared.Definitions.csproj">
-      <Project>{DBBE5A5F-9C3B-4785-91A9-0A5245B2F3BC}</Project>
+      <Project>{dbbe5a5f-9c3b-4785-91a9-0a5245b2f3bc}</Project>
       <Name>Saga.Shared.Definitions</Name>
     </ProjectReference>
   </ItemGroup>

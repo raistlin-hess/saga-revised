@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -15,12 +15,12 @@
     <StartupObject>Saga.Map.Singleton</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
-    <OldToolsVersion>2.0</OldToolsVersion>
+    <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <AssemblyOriginatorKeyFile>saga.pfx</AssemblyOriginatorKeyFile>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -35,6 +35,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -635,16 +636,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Saga.Shared.Definitions\Saga.Shared.Definitions.csproj">
-      <Project>{DBBE5A5F-9C3B-4785-91A9-0A5245B2F3BC}</Project>
-      <Name>Saga.Shared.Definitions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shared\Saga.Shared\Saga.Shared.NetworkCore.csproj">
-      <Project>{45C7E3E6-825A-4AB2-8E60-69131B596229}</Project>
-      <Name>Saga.Shared.NetworkCore</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Utils\Resources\SingletonNotificationStrings.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -676,6 +667,16 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Saga.Shared.Definitions\Saga.Shared.Definitions.csproj">
+      <Project>{dbbe5a5f-9c3b-4785-91a9-0a5245b2f3bc}</Project>
+      <Name>Saga.Shared.Definitions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Saga.Shared\Saga.Shared.NetworkCore.csproj">
+      <Project>{45c7e3e6-825a-4ab2-8e60-69131b596229}</Project>
+      <Name>Saga.Shared.NetworkCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <!-- Start custom -->
   <PropertyGroup>
