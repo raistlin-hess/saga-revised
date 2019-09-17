@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `list_maildata` (
   `Message` text,
   `Attachment` tinyblob,
   `Zeny` int(10) unsigned NOT NULL DEFAULT '0',
-  `DateRead` datetime DEFAULT '0000-00-00 00:00:00',
+  `DateRead` datetime DEFAULT '1970-01-01 00:00:01',
   `IsOutbox` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `IsInbox` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `IsPending` tinyint(3) unsigned NOT NULL DEFAULT '1',

@@ -26,6 +26,7 @@ BEGIN
       `list_quests`.`Req_Quest` IN (SELECT `list_questhistory`.`QuestId` FROM `list_questhistory` WHERE `list_questhistory`.`CharId`=CharacterId)
     )
   GROUP BY
+	`list_quests`.`QuestId`,
     `list_quests`.`NPC`
   LIMIT 50;
 
