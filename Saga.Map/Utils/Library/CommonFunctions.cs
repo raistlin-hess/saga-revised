@@ -235,7 +235,8 @@ public static class CommonFunctions
             uint PersonalQuestId = (PersonalQuest != null) ? PersonalQuest.QuestId : 0;
             foreach (KeyValuePair<uint, uint> pair in
                 Singleton.Database.GetPersonalAvailableQuestsByRegion(target, (byte)target.currentzone.RegionCode, PersonalQuestId))
-                tmp.Add(pair.Value, pair.Key);
+                //tmp.Add(pair.Value, pair.Key);
+                tmp.Add(pair.Key, pair.Value);
             lock (target.client.AvailablePersonalRequests)
                 target.client.AvailablePersonalRequests = tmp;
         }

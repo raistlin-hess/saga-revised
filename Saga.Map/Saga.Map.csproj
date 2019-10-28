@@ -101,7 +101,16 @@
     <Compile Include="Configuration\Config.Factory.Templates.cs" />
     <Compile Include="Netwok\Internal Client\InternalClient Characters.cs" />
     <Compile Include="Netwok\Internal Client\InternalClient-Core.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Tables\Table Quest\Quest.TakeItem.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Tables\Table Quest\Quest.GiveItem.cs" />
     <Compile Include="Utils\Enumarations\ItemUpdateReasons.cs" />
     <Compile Include="Utils\Enumarations\JobTypes.cs" />

@@ -4,6 +4,7 @@ using System.Reflection;
 
 namespace Saga
 {
+    using Shared.Definitions.Properties;
     public delegate bool UnresolvedType(string name, out Type type);
 
     public static class CoreService
@@ -132,7 +133,7 @@ namespace Saga
             try
             {
                 string[] names = name.Split(",".ToCharArray(), 2);
-                string path = Path.Combine(Environment.CurrentDirectory, names[0]);
+                string path = Path.Combine(Settings.Default.LibPath, names[0]);
                 if (File.Exists(path))
                 {
                     Assembly a = Assembly.LoadFile(path);
@@ -141,8 +142,17 @@ namespace Saga
                 }
                 else
                 {
-                    type = null;
-                    return false;
+                    path = Path.Combine(Environment.CurrentDirectory, names[0]);
+                    if(File.Exists(path))
+                    {
+                        Assembly a = Assembly.LoadFile(path);
+                        type = a.GetType(names[1].Trim(' '), false, false);
+                        return (type != null);
+                    } else
+                    {
+                        type = null;
+                        return false;
+                    }
                 }
             }
             catch (BadImageFormatException ex)

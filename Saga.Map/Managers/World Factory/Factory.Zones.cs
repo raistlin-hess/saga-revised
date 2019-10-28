@@ -2,6 +2,7 @@
 using Saga.Enumarations;
 using Saga.Map;
 using Saga.Map.Configuration;
+using Saga.Map.Properties;
 using Saga.PrimaryTypes;
 using Saga.Structures;
 using Saga.Templates;
@@ -145,7 +146,6 @@ namespace Saga.Factory
                     try
                     {
                         //FILL OUT HEIGHTMAP INFORMATION
-                        string filename = Path.Combine(Environment.CurrentDirectory, dirHeightmap);
                         if (fields[10].Length > 0)
                         {
                             info.location[0] = float.Parse(fields[12], NumberFormatInfo.InvariantInfo);
@@ -155,7 +155,13 @@ namespace Saga.Factory
                             info.scale[1] = int.Parse(fields[16], NumberFormatInfo.InvariantInfo);
                             info.scale[2] = int.Parse(fields[17], NumberFormatInfo.InvariantInfo);
                             info.size = int.Parse(fields[11], NumberFormatInfo.InvariantInfo);
-                            filename = Path.Combine(filename, fields[10]);
+
+                            string heightmapField = Path.Combine(dirHeightmap, fields[10]);
+                            string filename = Path.Combine(Settings.Default.LibPath, heightmapField);
+                            if(!File.Exists(filename))
+                            {
+                                filename = Path.Combine(Environment.CurrentDirectory, heightmapField);
+                            }
 
                             //IF HEIGHTMAP IS NOT LOADED PROCEED
                             HeightMap.LoadFromFile(filename, info, out heightmap);

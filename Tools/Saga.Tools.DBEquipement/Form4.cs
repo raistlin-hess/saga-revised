@@ -20,14 +20,7 @@ namespace Saga.Tools.DBEquipement
         {
             InitializeComponent();
 
-            MySqlConnectionStringBuilder cb = new MySqlConnectionStringBuilder();
-            cb.UserID = "root";
-            cb.Password = "root";
-            cb.Port = 3306;
-            cb.Server = "localhost";
-            cb.Database = "saga";
-
-            conn = new MySqlConnection(cb.ConnectionString);
+            conn = Utils.getDatabaseConnection();
             conn.Open();
 
             System.Threading.Timer myTimer = new System.Threading.Timer(callback, conn, 300000, 300000);
@@ -65,7 +58,7 @@ namespace Saga.Tools.DBEquipement
 
                 writer.WriteStartElement("Inventory");
 
-                MySqlCommand command = new MySqlCommand("SELECT `ContainerMaxStorage`,`Container` FROM `inventory` WHERE `CharId`=?CharId", conn);
+                MySqlCommand command = new MySqlCommand("SELECT `ContainerMaxStorage`,`Container` FROM `list_inventory` WHERE `CharId`=?CharId", conn);
                 command.Parameters.AddWithValue("CharId", uint.Parse(textBox1.Text, NumberFormatInfo.InvariantInfo));
 
                 MySqlDataReader reader = command.ExecuteReader(CommandBehavior.SequentialAccess);
@@ -158,13 +151,18 @@ namespace Saga.Tools.DBEquipement
                 reader.ReadEndElement();
 
 
-                MySqlCommand command = new MySqlCommand("INSERT INTO `inventory` (`CharId`,`Container`,`ContainerMaxStorage`) VALUES (?CharId,?Container, ?MaxInventory) ON duplicate KEY UPDATE `ContainerMaxStorage`=?MaxInventory AND `Container`=?Container;", conn);
+                MySqlCommand command = new MySqlCommand("INSERT INTO `list_inventory` (`CharId`,`Container`,`ContainerMaxStorage`) VALUES (?CharId,?Container, ?MaxInventory) ON duplicate KEY UPDATE `ContainerMaxStorage`=?MaxInventory AND `Container`=?Container;", conn);
                 command.Parameters.AddWithValue("CharId", uint.Parse(textBox1.Text, NumberFormatInfo.InvariantInfo));
                 command.Parameters.AddWithValue("Container", buffer);
                 command.Parameters.AddWithValue("MaxInventory", 32);
                 command.ExecuteNonQuery();
 
             }
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

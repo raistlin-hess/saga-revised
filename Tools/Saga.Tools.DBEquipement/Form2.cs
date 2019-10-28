@@ -20,14 +20,7 @@ namespace Saga.Tools.DBEquipement
         {
             InitializeComponent();
 
-            MySqlConnectionStringBuilder cb = new MySqlConnectionStringBuilder();
-            cb.UserID = "root";
-            cb.Password = "root";
-            cb.Port = 3306;
-            cb.Server = "localhost";
-            cb.Database = "saga";
-
-            conn = new MySqlConnection(cb.ConnectionString);
+            conn = Utils.getDatabaseConnection();
             conn.Open();
 
             System.Threading.Timer myTimer = new System.Threading.Timer(callback, conn, 300000, 300000);
@@ -157,6 +150,11 @@ namespace Saga.Tools.DBEquipement
                 command.ExecuteNonQuery();
 
             }
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

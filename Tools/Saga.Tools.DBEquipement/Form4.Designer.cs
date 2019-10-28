@@ -79,7 +79,7 @@ namespace Saga.Tools.DBEquipement
             this.lblBorder.Size = new System.Drawing.Size(265, 2);
             this.lblBorder.TabIndex = 5;
             // 
-            // Form1
+            // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -89,8 +89,9 @@ namespace Saga.Tools.DBEquipement
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
+            this.Name = "Form4";
             this.Text = "DBExporter";
+            this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

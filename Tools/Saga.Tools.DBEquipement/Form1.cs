@@ -20,14 +20,7 @@ namespace Saga.Tools.DBEquipement
         {
             InitializeComponent();
 
-            MySqlConnectionStringBuilder cb = new MySqlConnectionStringBuilder();
-            cb.UserID = "root";
-            cb.Password = "root";
-            cb.Port = 3306;
-            cb.Server = "localhost";
-            cb.Database = "saga";
-
-            conn = new MySqlConnection(cb.ConnectionString);
+            conn = Utils.getDatabaseConnection();
             conn.Open();
 
             System.Threading.Timer myTimer = new System.Threading.Timer(callback, conn, 300000, 300000);
@@ -65,7 +58,7 @@ namespace Saga.Tools.DBEquipement
 
                 writer.WriteStartElement("Equipment");
 
-                MySqlCommand command = new MySqlCommand("SELECT `Equipement` FROM `equipment` WHERE `CharId`=?CharId", conn);
+                MySqlCommand command = new MySqlCommand("SELECT `Equipement` FROM `list_equipment` WHERE `CharId`=?CharId", conn);
                 command.Parameters.AddWithValue("CharId", uint.Parse(textBox1.Text, NumberFormatInfo.InvariantInfo));
 
                 MySqlDataReader reader = command.ExecuteReader(CommandBehavior.SequentialAccess);
@@ -148,6 +141,11 @@ namespace Saga.Tools.DBEquipement
                 command.ExecuteNonQuery();
 
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
